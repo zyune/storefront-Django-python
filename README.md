@@ -1,33 +1,42 @@
 # storefront-Django-python
 This is a demo for Django framework
 
-当我在运行 pipenv install Django 后发生了什么？
-```shell
-Creating a virtualenv for this project...
-Pipfile: /Users/mac/storefront-Django-python/Pipfile
-Using /Users/mac/opt/anaconda3/bin/python3 (3.8.8) to create virtualenv...
-⠇ Creating virtual environment...created virtual environment CPython3.8.8.final.0-64 in 1318ms
-  creator CPython3Posix(dest=/Users/mac/.local/share/virtualenvs/storefront-Django-python-eBkwSVTm, clear=False, no_vcs_ignore=False, global=False)
-  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/Users/mac/Library/Application Support/virtualenv)
-    added seed packages: pip==22.0.4, setuptools==62.1.0, wheel==0.37.1
-  activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
 
-✔ Successfully created virtual environment!
-Virtualenv location: /Users/mac/.local/share/virtualenvs/storefront-Django-python-eBkwSVTm
-Creating a Pipfile for this project...
-Installing Django...
-Adding Django to Pipfile's [packages]...
-✔ Installation Succeeded
-Pipfile.lock not found, creating...
-Locking [dev-packages] dependencies...
-Locking [packages] dependencies...
-Building requirements...
-Resolving dependencies...
-✔ Success!
-Updated Pipfile.lock (a6086c)!
-Installing dependencies from Pipfile.lock (a6086c)...
-  🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 0/0 — 00:00:00
-To activate this project's virtualenv, run pipenv shell.
-Alternatively, run a command inside the virtualenv with pipenv run.
+## App using Django YouTube,Instagram, spotify dropbox
 
+## Good Things Django provide
+- admin sit
+- object-relational mapper (ORM),it abstracts the database. So we can query or process data without writing a lot of SQL.
+- Authentication
+- Caching
+
+### Pipfile: 
+This is package for javascript projects
+
+### Steps to deploy a django project
+
+1. activate the virtual (you can do it or not). If you do it, you are gonna use the python interpreter inside this cirtual environment,not the one that globally
+- Go to a directory
+- run ```pipenv shell```
+2. run ```django-admin startproject project_name .```
+- django-admin is a utility that comes with django. run it we can use all of the commands that we can use to woek with django projects
+
+3. run ```django-admin runserver (portnumer)``` . You can start a project by running this command, you can specify the port you are gonna run on your localhost.
+- small tips run ```lsof -i: portnumber``` to test if the port that you are gonna use is occupied or not, if it shows you nothing then you can use it. In following case, you cannot use 8888, but you can use 8000. 8888 is already being accupied
+```shell 
+   mac   ~  lsof -i:8888                                                                                                   14:15:39 
+COMMAND     PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+Google      486  mac   24u  IPv6 0x652da220aafaae0d      0t0  TCP localhost:52499->localhost:ddi-tcp-1 (ESTABLISHED)
+Google      486  mac   25u  IPv6 0x652da220d9fbe14d      0t0  TCP localhost:50389->localhost:ddi-tcp-1 (ESTABLISHED)
+python3.8 18377  mac    7u  IPv4 0x652da220c520a64d      0t0  TCP localhost:ddi-tcp-1 (LISTEN)
+python3.8 18377  mac    8u  IPv6 0x652da220e4cf47ad      0t0  TCP localhost:ddi-tcp-1 (LISTEN)
+python3.8 18377  mac   13u  IPv6 0x652da220d9fbf46d      0t0  TCP localhost:ddi-tcp-1->localhost:50389 (ESTABLISHED)
+python3.8 18377  mac   66u  IPv6 0x652da220d9fbfacd      0t0  TCP localhost:ddi-tcp-1->localhost:52499 (ESTABLISHED)
+   mac   ~  lsof -i:8000                                                                                        0.16     14:16:49 
+   mac   ~ 
 ```
+### After run this command we can see some ```.py``` file in our project folder.
+- settings.py . This is where we defind our application settings.
+- urls.py . This is where we define url applications
+- asgi.py and usgi.py. They are used for deployment
+- manage.py, This is the wrapper arpund django admin. It knows the setting of our project. So in the project whenever you need to run ```django-admin XXX``` , don't run it. Instead you should run ``` python manage.py XXXX```
