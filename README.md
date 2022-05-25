@@ -42,7 +42,7 @@ python3.8 18377  mac   66u  IPv6 0x652da220d9fbfacd      0t0  TCP localhost:ddi-
 - manage.py, This is the wrapper arpund django admin. It knows the setting of our project. So in the project whenever you need to run ```django-admin XXX``` , don't run it. Instead you should run ``` python manage.py XXXX```
 
 ## Creating a app
-run ```  python manage.py startapp playground ```, playground is a django app. Every django app uses exactly same structure.
+### 1. run ```  python manage.py startapp playground ```, playground is a django app. Every django app uses exactly same structure.
 ![output](img/playground_structure.png)
 - migration folder is for generating database tables
 - admin.py  is where we define how the admin interface for this app is going to look like
@@ -50,3 +50,15 @@ run ```  python manage.py startapp playground ```, playground is a django app. E
 - models.py: This is where we define the model classes for this app. We use model classed to pull out  data from database and present it to our user. (This is similar to every MVC framework)
 - test.py 我的理解就是个写test的地方，还没有去研究
 - views.py 相当于java中的request handler  就是个处理前端传过来的request的地方，返回一个response
+
+### 2. everytime we intalled an app, we need to regist in ```setting.py``` 中的 ```INSTALLED_APPS```
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+```
