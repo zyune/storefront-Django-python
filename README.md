@@ -63,3 +63,34 @@ INSTALLED_APPS = [
     'playground', # this is where we regist the app
 ]
 ```
+
+## implement a request handler and map it through url
+
+1.
+```python
+# Create your views here.
+def say_hello(request):
+    # return HttpResponse("Hello, world. You're at the polls index.")
+    return render(request, 'html')
+```
+2. In playground/urls.py we add, this is in your app
+
+```python
+from django.urls import path
+from . import views
+# This is where we mapping url to views so when we input a url in a browser we know where to go 
+urlpatterns = [
+    path('hello/', views.say_hello),
+]
+```
+3. import include in the directory of your storefront, This is the rrot directory of your django project,
+use the parameter include
+```python
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('playground/',include('playground.urls'))
+]
+
+```
