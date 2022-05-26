@@ -1,5 +1,6 @@
 # storefront-Django-python
 This is a demo for Django framework
+![django](img/django.png)
 
 
 ## App using Django YouTube,Instagram, spotify dropbox
@@ -94,3 +95,4 @@ urlpatterns = [
 ]
 
 ```
+minimal coupling high cohesion
